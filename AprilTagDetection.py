@@ -13,10 +13,8 @@ args = vars(ap.parse_args())
 
 print("[INFO] loading image...")
 image = []
-if(args["image"] == "camera"):
-    print("Placeholder")
-else: 
-	image = cv2.imread(args["image"])
+
+image = cv2.imread(args["image"])
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 print("[INFO] detecting AprilTags...")
@@ -48,5 +46,5 @@ for tag in results:
 	#Put the tagID of the tag on the image
     cv2.putText(image, str(tagId), x, cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,0,0), 2)
 
-    cv2.imshow("k", image)
+    cv2.imshow("AprilTag Image Detection", image)
     cv2.waitKey(0)
