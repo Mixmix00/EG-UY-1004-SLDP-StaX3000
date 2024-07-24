@@ -1,0 +1,4 @@
+apriltag
+argparse
+opencv-python
+numpy
