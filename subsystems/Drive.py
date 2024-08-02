@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import MotorShield.PiMotor as PiMotor
+import MotorSheild.PiMotor as PiMotor
 import time
 import RPi.GPIO as GPIO
 import math
