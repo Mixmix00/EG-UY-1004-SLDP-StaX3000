@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import PiMotor
+import MotorShield.PiMotor as PiMotor
 import time
 import RPi.GPIO as GPIO
 import math
@@ -12,15 +12,15 @@ br = PiMotor.Motor("MOTOR4",1)
 
 #To drive all motors together
 flBr = PiMotor.LinkedMotors(fl, br)
-frBl = PiMotor.linkedMotors(fr, bl)
+frBl = PiMotor.LinkedMotors(fr, bl)
 
 #Names for Individual Arrows
-ab = PiMotor.Arrow(1)
-al = PiMotor.Arrow(2)
-af = PiMotor.Arrow(3) 
-ar = PiMotor.Arrow(4)
+#ab = PiMotor.Arrow(1)
+#al = PiMotor.Arrow(2)
+#af = PiMotor.Arrow(3) 
+#ar = PiMotor.Arrow(4)
 
-def setDriveMotors(radians, speed):
+def FUNC_setDriveMotors(radians, speed):
     frontLeftBackRight = math.sin(radians + (math.pi/4)) * speed
     frontRightBackLeft = math.sin(radians - (math.pi/4)) * speed
 
@@ -38,34 +38,43 @@ def setDriveMotors(radians, speed):
     else:
         frBl.stop()
     
-def stopAllMotors():
+def FUNC_stopAllMotors():
     flBr.stop()
     frBl.stop()
 
-##This segment drives the motors in the direction listed below:
-## forward and reverse takes speed in percentage(0-100)
 
-try:
-    ab.on()
-    al.on()
-    af.on()
-    ar.on()
-    while True:
-        setDriveMotors(0)
-        time.sleep(5)
-        setDriveMotors(math.pi/2)
-        time.sleep(5)
-        setDriveMotors(math.pi)
-        time.sleep(5)
-        setDriveMotors(3*math.pi/2)
-        time.sleep(5)
-        stopAllMotors()
+def FUNC_driveStraight():
+    FUNC_setDriveMotors(math.pi/2)
+
+def FUNC_driveBackwards():
+    FUNC_setDriveMotors(3 * math.pi/2)
+
+def FUNC_driveDiagonalForwardRight():
+    FUNC_setDriveMotors(math.pi/4)
+
+def FUNC_driveDiagonalForwardLeft():
+    FUNC_setDriveMotors(3 * math.pi/4)
+
+def PROC_driveSquare():
+    #ab.on()
+    #al.on()
+    #af.on()
+    #ar.on()
         
-except KeyboardInterrupt:
+    FUNC_setDriveMotors(0)
+    time.sleep(5)
+    FUNC_setDriveMotors(math.pi/2)
+    time.sleep(5)
+    FUNC_setDriveMotors(math.pi)
+    time.sleep(5)
+    FUNC_setDriveMotors(3*math.pi/2)
+    time.sleep(5)
+    FUNC_stopAllMotors()
+            
+    
     ab.off()
     al.off()
     af.off()
     ar.off()
-    GPIO.cleanup()
 
     
