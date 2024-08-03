@@ -1,4 +1,4 @@
-import MotorShield.PiMotor as PiMotor
+import MotorSheild.PiMotor as PiMotor
 import time
 
 a1 = PiMotor.Arrow(1)
