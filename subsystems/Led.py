@@ -36,4 +36,3 @@ def signalRobotParty():
     chan_list = (GREEN_PIN,BLUE_PIN,RED_PIN)
     GPIO.output(chan_list, GPIO.HIGH)
 
-GPIO.cleanup()
