@@ -32,10 +32,10 @@ def findRelative2DPositionOfTagFromCenterOfCamera(image, results, tagId):
         if tag.tag_id != tagId:
             continue
 
-        imageShape = image.shape()
+        imageShape = image.shape
 
-        midX = imageShape[0] / 2
-        midY = imageShape[1] / 2
+        midX = int(imageShape[1] / 2)
+        midY = int(imageShape[0] / 2)
 
         centerOfTag = tag.center
 
@@ -57,10 +57,10 @@ def isTagInCenterOfCamera2D(image, results, tagId, tolerencePercentage):
         if tag.tag_id != tagId:
             continue
 
-        imageShape = image.shape()
+        imageShape = image.shape
 
-        midX = imageShape[0] / 2
-        midY = imageShape[1] / 2
+        midX = int(imageShape[1] / 2)
+        midY = int(imageShape[0] / 2)
 
         centerOfTag = tag.center
 
