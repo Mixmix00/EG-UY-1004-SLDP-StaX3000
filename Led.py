@@ -18,12 +18,22 @@ def setup():
 # Values are inverted (HIGH becomes LOW etc)
 # Think of LOW as 0 and HIGH as 255
 def signalStartingRobot():
-    GPIO.output(RED_PIN, GPIO.HIGH)
-    GPIO.output(GREEN_PIN, GPIO.LOW)
+    GPIO.output(GREEN_PIN, GPIO.HIGH)
+    GPIO.output(RED_PIN, GPIO.LOW)
     GPIO.output(BLUE_PIN, GPIO.LOW)
+
+def signalRobotUnloading():
+    chan_list = (GREEN_PIN,BLUE_PIN)
+    GPIO.output(chan_list, GPIO.LOW)
+    GPIO.output(RED_PIN,GPIO.HIGH)
 
 def signalRobotOnAndNotEnabled():
     GPIO.output(RED_PIN, GPIO.LOW)
     GPIO.output(GREEN_PIN, GPIO.HIGH)
     GPIO.output(BLUE_PIN, GPIO.HIGH)
 
+def signalRobotParty():
+    chan_list = (GREEN_PIN,BLUE_PIN,RED_PIN)
+    GPIO.output(chan_list, GPIO.HIGH)
+
+GPIO.cleanup()
