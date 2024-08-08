@@ -84,13 +84,6 @@ def isTagInCenterOfCamera2D(image, results, tagId, tolerencePercentage):
         return (isCenteredX, isCenteredY)
 
 
-
-        
-
-
-
-    
-
 def makeResultsViewable(image, results):
     for tag in results:
         #Get the corners of the tag in the image as pixel locations

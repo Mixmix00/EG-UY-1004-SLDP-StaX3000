@@ -20,7 +20,7 @@ frBl = PiMotor.LinkedMotors(fr, bl)
 #af = PiMotor.Arrow(3) 
 #ar = PiMotor.Arrow(4)
 
-def FUNC_setDriveMotors(radians, speed):
+def CONCURRENT_setDriveMotors(radians, speed):
     frontLeftBackRight = math.sin(radians + (math.pi/4)) * speed
     frontRightBackLeft = math.sin(radians - (math.pi/4)) * speed
 
@@ -37,23 +37,36 @@ def FUNC_setDriveMotors(radians, speed):
         frBl.reverse(frontRightBackLeft)
     else:
         frBl.stop()
+
+def CONCURRENT_spinClockwise():
+    fl.forward(100)
+    bl.forward(100)
+    fr.reverse(100)
+    br.reverse(100)
+
+def CONCURRENT_spinCounterClockwise():
+    fl.reverse(100)
+    bl.reverse(100)
+    fr.forward(100)
+    br.forward(100)
+
     
-def FUNC_stopAllMotors():
+def CONCURRENT_stopAllMotors():
     flBr.stop()
     frBl.stop()
 
 
-def FUNC_driveStraight():
-    FUNC_setDriveMotors(math.pi/2)
+def CONCURRENT_driveStraight():
+    CONCURRENT_setDriveMotors(math.pi/2)
 
-def FUNC_driveBackwards():
-    FUNC_setDriveMotors(3 * math.pi/2)
+def CONCURRENT_driveBackwards():
+    CONCURRENT_setDriveMotors(3 * math.pi/2)
 
-def FUNC_driveDiagonalForwardRight():
-    FUNC_setDriveMotors(math.pi/4)
+def CONCURRENT_driveDiagonalForwardRight():
+    CONCURRENT_setDriveMotors(math.pi/4)
 
-def FUNC_driveDiagonalForwardLeft():
-    FUNC_setDriveMotors(3 * math.pi/4)
+def CONCURRENT_driveDiagonalForwardLeft():
+    CONCURRENT_setDriveMotors(3 * math.pi/4)
 
 def PROC_driveSquare():
     #ab.on()
@@ -61,15 +74,15 @@ def PROC_driveSquare():
     #af.on()
     #ar.on()
         
-    FUNC_setDriveMotors(0)
+    CONCURRENT_setDriveMotors(0)
     time.sleep(5)
-    FUNC_setDriveMotors(math.pi/2)
+    CONCURRENT_setDriveMotors(math.pi/2)
     time.sleep(5)
-    FUNC_setDriveMotors(math.pi)
+    CONCURRENT_setDriveMotors(math.pi)
     time.sleep(5)
-    FUNC_setDriveMotors(3*math.pi/2)
+    CONCURRENT_setDriveMotors(3*math.pi/2)
     time.sleep(5)
-    FUNC_stopAllMotors()
+    CONCURRENT_stopAllMotors()
             
     
     ab.off()

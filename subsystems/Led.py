@@ -32,7 +32,8 @@ def signalRobotOnAndNotEnabled():
     GPIO.output(GREEN_PIN, GPIO.HIGH)
     GPIO.output(BLUE_PIN, GPIO.HIGH)
 
-def signalRobotParty():
-    chan_list = (GREEN_PIN,BLUE_PIN,RED_PIN)
-    GPIO.output(chan_list, GPIO.HIGH)
+def signalDrivingToBox():
+    GPIO.output(GREEN_PIN, GPIO.LOW)
+    GPIO.output(RED_PIN, GPIO.LOW)
+    GPIO.output(BLUE_PIN, GPIO.LOW)
 

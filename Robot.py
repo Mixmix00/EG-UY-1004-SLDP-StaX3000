@@ -1,6 +1,5 @@
-#import subsystems.Drive as Drive
-import subsystems.AprilTagWebcam as AprilTagWebcam
+import procedures.standalone.LocatePickupBox as LocatePickupBox
+import procedures.standalone.DriveToPickupBox as DriveToPickupBox
 
-
-while True:
-    AprilTagWebcam.readAndDetectFrame()
+LocatePickupBox.run(1)
+DriveToPickupBox.run(1)
