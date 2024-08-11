@@ -4,15 +4,9 @@ import time
 import RPi.GPIO as GPIO
 import math
 
-#Name of Individual MOTORS 
-fl = PiMotor.Motor("MOTOR1",1)
-fr = PiMotor.Motor("MOTOR2",1)
-bl = PiMotor.Motor("MOTOR3",1)
-br = PiMotor.Motor("MOTOR4",1)
-
 #To drive all motors together
-flBr = PiMotor.LinkedMotors(fl, br)
-frBl = PiMotor.LinkedMotors(fr, bl)
+flBr = PiMotor.Motor("MOTOR4",1)
+frBl = PiMotor.Motor("MOTOR3",1)
 
 #Names for Individual Arrows
 #ab = PiMotor.Arrow(1)
@@ -39,16 +33,18 @@ def CONCURRENT_setDriveMotors(radians, speed):
         frBl.stop()
 
 def CONCURRENT_spinClockwise():
-    fl.forward(100)
-    bl.forward(100)
-    fr.reverse(100)
-    br.reverse(100)
+    #fl.forward(100)
+    #bl.forward(100)
+    #fr.reverse(100)
+    #br.reverse(100)
+    raise Exception("Unimplemented")
 
 def CONCURRENT_spinCounterClockwise():
-    fl.reverse(100)
-    bl.reverse(100)
-    fr.forward(100)
-    br.forward(100)
+    #fl.reverse(100)
+    #bl.reverse(100)
+    #fr.forward(100)
+    #br.forward(100)
+    raise Exception("Unimplemented")
 
     
 def CONCURRENT_stopAllMotors():
@@ -85,9 +81,7 @@ def PROC_driveSquare():
     CONCURRENT_stopAllMotors()
             
     
-    ab.off()
-    al.off()
-    af.off()
-    ar.off()
+    frBl.off()
+    flBr.off()
 
     
