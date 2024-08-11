@@ -1,6 +1,7 @@
 import subsystems.AprilTagWebcam as AprilTagWebcam
 import subsystems.Drive as Drive
 import subsystems.Led as Led
+import math
 import time
 
 #Ensure no other code is using a subsystem here
@@ -13,7 +14,7 @@ def run(boxId):
         if tag.tag_id == boxId:
             return
     
-    Drive.CONCURRENT_spinClockwise()
+    Drive.CONCURRENT_setDriveMotors(3 * math.pi/2, 100)
     startTime = time.time()
 
     while True:

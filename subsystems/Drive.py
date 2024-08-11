@@ -4,20 +4,25 @@ import time
 import RPi.GPIO as GPIO
 import math
 
-#To drive all motors together
+#Motors as they are connected to the motor board
 flBr = PiMotor.Motor("MOTOR4",1)
 frBl = PiMotor.Motor("MOTOR3",1)
 
-#Names for Individual Arrows
-#ab = PiMotor.Arrow(1)
-#al = PiMotor.Arrow(2)
-#af = PiMotor.Arrow(3) 
-#ar = PiMotor.Arrow(4)
-
+''' 
+Method to set power to the drive motor
+@param radians: The angle in radians to set the motors to
+@param speed: The speed to set the motors to (0.00-100.00)
+@return: None
+@throws: None
+@author: Max Spier, 2024
+'''
 def CONCURRENT_setDriveMotors(radians, speed):
+    # Find the speed of the motors based on the angle by using the formula and multiply it by the speed
     frontLeftBackRight = math.sin(radians + (math.pi/4)) * speed
     frontRightBackLeft = math.sin(radians - (math.pi/4)) * speed
 
+    # Set the motors to the speed using the library
+    # If the motors should have no power, stop them
     if frontLeftBackRight > 0:
         flBr.forward(frontLeftBackRight)
     elif frontLeftBackRight < 0:
@@ -32,56 +37,60 @@ def CONCURRENT_setDriveMotors(radians, speed):
     else:
         frBl.stop()
 
-def CONCURRENT_spinClockwise():
-    #fl.forward(100)
-    #bl.forward(100)
-    #fr.reverse(100)
-    #br.reverse(100)
-    raise Exception("Unimplemented")
 
-def CONCURRENT_spinCounterClockwise():
-    #fl.reverse(100)
-    #bl.reverse(100)
-    #fr.forward(100)
-    #br.forward(100)
-    raise Exception("Unimplemented")
-
-    
+'''
+Method to stop all motors
+@return: None
+@throws: None
+@author: Max Spier, 2024
+'''
 def CONCURRENT_stopAllMotors():
     flBr.stop()
     frBl.stop()
 
-
+'''
+Method to set the drive motors to drive straight
+@return: None
+@throws: None
+@author: Max Spier, 2024
+'''
 def CONCURRENT_driveStraight():
     CONCURRENT_setDriveMotors(math.pi/2)
 
+'''
+Method to set the drive motors to drive backwards
+@return: None
+@throws: None
+@author: Max Spier, 2024
+'''
 def CONCURRENT_driveBackwards():
     CONCURRENT_setDriveMotors(3 * math.pi/2)
 
+'''
+Method to set the drive motors to drive diagonal up (where the slope of the line would be 1)
+@return: None
+@throws: None
+@author: Max Spier, 2024
+'''
 def CONCURRENT_driveDiagonalForwardRight():
     CONCURRENT_setDriveMotors(math.pi/4)
 
+'''
+Method to set the drive motors to drive diagonal up (where the slope of the line would be -1)
+@return: None
+@throws: None
+@author: Max Spier, 2024
+'''
 def CONCURRENT_driveDiagonalForwardLeft():
     CONCURRENT_setDriveMotors(3 * math.pi/4)
+'''
+Method to set the drive motors to drive diagonal down (where the slope of the line would be -1)
+@return: None
+@throws: None
+@author: Max Spier, 2024
+'''
+def CONCURRENT_driveDiagonalBackwardsRight():
+    CONCURRENT_setDriveMotors(7 * math.pi/4)
 
-def PROC_driveSquare():
-    #ab.on()
-    #al.on()
-    #af.on()
-    #ar.on()
-        
-    CONCURRENT_setDriveMotors(0)
-    time.sleep(5)
-    CONCURRENT_setDriveMotors(math.pi/2)
-    time.sleep(5)
-    CONCURRENT_setDriveMotors(math.pi)
-    time.sleep(5)
-    CONCURRENT_setDriveMotors(3*math.pi/2)
-    time.sleep(5)
-    CONCURRENT_stopAllMotors()
-            
-    
-    frBl.off()
-    flBr.off()
 
     
