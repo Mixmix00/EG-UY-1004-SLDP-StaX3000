@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StaX 3000 Robot Command Center</title>
+    </head>
+    <body>
+        {% if logged_in %}
+    
+        <h1>Welcome to the StaX 3000 Robot Command Center!</h1>
+        <button onclick="window.location.href='/driveSquare'">Run DriveSquare</button>
+        <button onclick="window.location.href='/driveTriangle'">Run DriveTriangle</button>
+        <button onclick="window.location.href='/pickupAndDeliverBox'">Pickup and Deliver Box</button>
+        
+        {% else %}
+    
+            <button onclick="window.location.href = '/'">Login</button>
+        
+        {% endif %}
+    </body>
+</html>
