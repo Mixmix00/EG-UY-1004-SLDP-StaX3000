@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 import math
 
 #Motors as they are connected to the motor board
-flBr = PiMotor.Motor("MOTOR4",1)
+flBr = PiMotor.Motor("MOTOR4",2)
 frBl = PiMotor.Motor("MOTOR3",1)
 
 ''' 
