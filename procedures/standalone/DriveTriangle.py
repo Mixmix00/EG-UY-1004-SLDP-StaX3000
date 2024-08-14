@@ -7,6 +7,6 @@ def run():
     time.sleep(4)
     Drive.CONCURRENT_driveDiagonalBackwardsRight()
     time.sleep(5)
-    Drive.CONCURRENT_setDriveMotors(math.pi)
+    Drive.CONCURRENT_setDriveMotors(math.pi,100)
     time.sleep(3)
     Drive.CONCURRENT_stopAllMotors()
