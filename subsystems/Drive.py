@@ -92,5 +92,10 @@ Method to set the drive motors to drive diagonal down (where the slope of the li
 def CONCURRENT_driveDiagonalBackwardsRight():
     CONCURRENT_setDriveMotors(7 * math.pi/4)
 
+def CONCURRENT_M3():
+    frBl.forward(100)
+
+def CONCURRENT_M4():
+    flBr.forward(100)
 
     
