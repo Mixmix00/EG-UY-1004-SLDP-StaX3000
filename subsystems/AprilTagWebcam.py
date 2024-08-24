@@ -21,8 +21,9 @@ def readAndDetectFrame():
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     results = detector.detect(gray)
     if len(results) > 0:
-        print("Size: " + str(image.shape))
-        print(str(results))
+        #print("Size: " + str(image.shape))
+        #print(str(results))
+        print("")
     return ((image, results))
 
 #This function will tell you where the tag is relative to the center of the camera.
@@ -109,3 +110,8 @@ def makeResultsViewable(image, results):
 
         cv2.imshow("AprilTag Video Detection", image)
         cv2.waitKey(0)
+
+while True:
+    result = readAndDetectFrame()
+    makeResultsViewable(result[0], result[1])
+    print(str(findRelative2DPositionOfTagFromCenterOfCamera(result[0], result[1], 3)))
