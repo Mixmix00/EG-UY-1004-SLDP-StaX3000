@@ -55,7 +55,8 @@ Method to set the drive motors to drive straight
 @author: Max Spier, 2024
 '''
 def CONCURRENT_driveStraight():
-    CONCURRENT_setDriveMotors(math.pi/2)
+    flBr.forward(100)
+    frBl.forward(100)
 
 '''
 Method to set the drive motors to drive backwards
@@ -64,7 +65,8 @@ Method to set the drive motors to drive backwards
 @author: Max Spier, 2024
 '''
 def CONCURRENT_driveBackwards():
-    CONCURRENT_setDriveMotors(3 * math.pi/2)
+    flBr.reverse(100)
+    frBl.reverse(100)
 
 '''
 Method to set the drive motors to drive diagonal up (where the slope of the line would be 1)
